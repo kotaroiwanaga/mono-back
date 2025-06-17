@@ -1,66 +1,74 @@
-# mono-back
+# 起動手順
+下記コマンドを実行し、DBサーバ(Docker)を起動する。
+```cmd
+docker-compose up -d
+```
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+※DBサーバを停止する際は下記コマンドを実行
+```cmd
+docker-compose down -v
+```
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+下記コマンドを実行し、バックエンドの開発サーバを起動する。
 
-## Running the application in dev mode
-
-You can run your application in dev mode that enables live coding using:
-
-```shell script
+```cmd
+cd 【クローンしたリポジトリのルートフォルダ】
 ./mvnw compile quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
-
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
+# 各種パス
+## ベースURL
+```
+http://localhost:8080
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+## ユーザー検索
+### エンドポイント
+```
+GET /user
+```
+### クエリパラメータ
+| パラメータ   | 必須  | 説明                    |
+| ------- | --- | --------------------- |
+| `id` | No | ユーザIDの検索条件。完全一致検索。`userName`と併用した場合、AND検索になる。 |
+| `userName` | No | ユーザ名の検索条件。ユーザ名(漢字/カナ)いずれかと部分一致するデータを抽出する。`id`と併用した場合、AND検索になる。 |
+| `_sort` | No | 並べ替え条件。(`asc`：昇順(デフォルト) `desc`：降順) |
+| `_order` | No | 並べ替え条件を適用する項目。(`id`：ユーザID(デフォルト) `userName`：ユーザ名(漢字) `userNameKana`：ユーザ名(カナ))
+| `_start`  | No | 取得するデータの開始位置（デフォルト: 0）   |
+| `_limit` | No | 取得データの件数（デフォルト: 10） |
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
+## ユーザ登録
+### エイドポイント
+```
+POST /user
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
+## リクエストボディ (例)
+```
+Content-Type: application/json
+{
+  "userName": "山田太郎",
+  "userNameKana": "ヤマダタロウ"
+}
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
+## ユーザ更新
+### エイドポイント
+```
+PUT /user/【ユーザID】
 ```
 
-You can then execute your native executable with: `./target/mono-back-1.0.0-SNAPSHOT-runner`
+## リクエストボディ (例)
+```
+Content-Type: application/json
+{
+  "userName": "山田太郎",
+  "userNameKana": "ヤマダタロウ"
+}
+```
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Related Guides
-
-- REST ([guide](https://quarkus.io/guides/rest)): A Jakarta REST implementation utilizing build time processing and Vert.x. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
-
-## Provided Code
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+## ユーザ削除
+### エイドポイント
+```
+DELETE /user/【ユーザID】
+```
