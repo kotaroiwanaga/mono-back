@@ -20,6 +20,9 @@ import jp.co.monocrea.enums.OrderType;
 import jp.co.monocrea.repository.UserRepository.SortItem;
 import jp.co.monocrea.service.UserService;
 
+/**
+ * ユーザ情報を操作するコントローラクラス
+ */
 @Path("/user")
 public class UserController {
     private final UserService userService;

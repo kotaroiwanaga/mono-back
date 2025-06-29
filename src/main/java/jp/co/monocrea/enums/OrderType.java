@@ -1,5 +1,8 @@
 package jp.co.monocrea.enums;
 
+/**
+ * ソート順序を表す列挙型
+ */
 public enum OrderType {
     ASC("ASC"),
     DESC("DESC");

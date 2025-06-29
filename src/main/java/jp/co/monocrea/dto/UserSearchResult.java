@@ -5,6 +5,9 @@ import java.util.List;
 
 import jakarta.json.bind.annotation.JsonbNillable;
 
+/**
+ * ユーザー検索結果を表すクラス
+ */
 @JsonbNillable
 public class UserSearchResult {
     private List<User> userList;

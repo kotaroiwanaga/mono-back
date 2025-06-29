@@ -5,6 +5,9 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import jp.co.monocrea.constants.*;
 
+/**
+ * ユーザー作成リクエストのDTOクラス
+ */
 public class UserCreateRequest {
     // TODO: 要検討：@ValidのNGとコントローラクラス側のNGでレスポンス構成が統一されてない
     @NotNull

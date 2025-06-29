@@ -1,7 +1,6 @@
 package jp.co.monocrea.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -12,6 +11,9 @@ import jp.co.monocrea.repository.UserRepository;
 import jp.co.monocrea.repository.UserRepository.SortItem;
 import jp.co.monocrea.enums.OrderType;
 
+/**
+ * ユーザ情報を操作するサービスクラス
+ */
 @ApplicationScoped
 public class UserService {
 

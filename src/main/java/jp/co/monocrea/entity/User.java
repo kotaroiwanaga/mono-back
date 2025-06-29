@@ -7,6 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * ユーザ情報を表すエンティティクラス
+ */
 @Entity
 @Table(name = "users")
 public class User {

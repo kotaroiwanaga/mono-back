@@ -10,6 +10,9 @@ import jakarta.persistence.TypedQuery;
 import jp.co.monocrea.entity.User;
 import jp.co.monocrea.enums.OrderType;
 
+/**
+ * ユーザ情報を操作するリポジトリクラス
+ */
 @ApplicationScoped
 public class UserRepository {
 
