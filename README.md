@@ -38,7 +38,7 @@ GET /user
 | `_limit` | No | 取得データの件数（デフォルト: 10） |
 
 ## ユーザ登録
-### エイドポイント
+### エンドポイント
 ```
 POST /user
 ```
@@ -53,7 +53,7 @@ Content-Type: application/json
 ```
 
 ## ユーザ更新
-### エイドポイント
+### エンドポイント
 ```
 PUT /user/【ユーザID】
 ```
@@ -68,7 +68,7 @@ Content-Type: application/json
 ```
 
 ## ユーザ削除
-### エイドポイント
+### エンドポイント
 ```
 DELETE /user/【ユーザID】
 ```
