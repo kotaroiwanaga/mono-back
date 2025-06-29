@@ -40,11 +40,6 @@ public class UserRepository {
         }
     }
 
-    private static final SortItem SORT_ITEM_DEFAULT = SortItem.ID; // デフォルトのソート項目
-    private static final OrderType ORDER_DEFAULT = OrderType.ASC; // デフォルトのソート順
-    private static final Integer LIMIT_DEFAULT = 10; // デフォルトの取得件数
-    private static final Integer OFFSET_DEFAULT = 0; // デフォルトのオフセット
-
     private final EntityManager em;
     @Inject
     public UserRepository(EntityManager em) {

@@ -6,7 +6,7 @@ import java.util.List;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import jp.co.monocrea.dto.SearchUserResult;
+import jp.co.monocrea.dto.UserSearchResult;
 import jp.co.monocrea.entity.User;
 import jp.co.monocrea.repository.UserRepository;
 import jp.co.monocrea.repository.UserRepository.SortItem;
@@ -23,21 +23,21 @@ public class UserService {
     }
     
     @Transactional
-    public SearchUserResult searchUser(Integer id, String userName, String sort, String order, Integer limit, Integer page) {
+    public UserSearchResult searchUser(Integer id, String userName, String sort, String order, Integer limit, Integer page) {
         int offset = (page - 1) * limit; // ページ番号は1から始まるため、オフセットはページ番号から1を引いて計算
 
         long cnt = userRepository.getUserCount(id, userName);
         long maxPage = (long)Math.ceil((double)cnt / limit);
 
-        SearchUserResult res = new SearchUserResult();
+        UserSearchResult res = new UserSearchResult();
         res.setUserList(new ArrayList<>());
         res.setSearchId(id);
         res.setSearchUserName(userName);
         res.setSortItemName(sort);
-        res.setOrder(order);
+        res.setOrderType(order);
         res.setLimit(limit);
-        res.setPage(page);
-        res.setMaxPage(maxPage);
+        res.setPageNo(page);
+        res.setMaxPageNo(maxPage);
         res.setTotalCnt(cnt);
 
         if(page <= maxPage){
