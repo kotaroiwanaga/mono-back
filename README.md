@@ -1,3 +1,12 @@
+# 初回設定
+以下のツールをインストールしておくこと。
+```cmd
+git
+corretto21jdk
+maven
+docker-desktop
+```
+
 # 起動手順
 下記コマンドを実行し、DBサーバ(Docker)を起動する。
 ```cmd
