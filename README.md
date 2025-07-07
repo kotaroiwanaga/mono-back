@@ -3,7 +3,6 @@
 ```cmd
 git
 corretto21jdk
-maven
 docker-desktop
 ```
 
